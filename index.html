@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E5B94F">
 <title>大嚕與小嚕的跨年之旅</title><link rel="apple-touch-icon" href="./web_app_icon.png">
 <link rel="icon" type="image/png" href="./web_app_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 
-:root{--bg:#fffdf8;--card:#fffdf8;--ink:#1D375E;--sub:#5d7089;--red:#129A9A;--gold:#D6B386;--line:#cfe0ee;--tint:#F4EFE2;--sky:#7BB6DD;--sun:#C8191E;--sky-top:#E5B94F;--s1:#d9eaf6;--s2:#e7f1f8;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#FFFDF8;--card:#fffdf8;--ink:#1D375E;--sub:#5d7089;--red:#129A9A;--gold:#D6B386;--line:#cfe0ee;--tint:#F4EFE2;--sky:#7BB6DD;--sun:#C8191E;--sky-top:#E5B94F;--s1:#d9eaf6;--s2:#e7f1f8;color-scheme:light;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
 
 
-html{background:linear-gradient(var(--sky-top),var(--sky-top)) top / 100% env(safe-area-inset-top,0px) no-repeat var(--bg);scroll-behavior:smooth;scroll-padding-top:calc(110px + env(safe-area-inset-top,0px))}
+html{background:linear-gradient(var(--sky-top),var(--sky-top)) top / 100% env(safe-area-inset-top,0px) no-repeat var(--bg);scroll-behavior:smooth;scroll-padding-top:110px}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:300 15px/1.8 "Noto Sans TC",system-ui,sans-serif;background-image:none}
 h1,h2,h3,.serif{font-family:"Shippori Mincho","Noto Serif TC",serif;font-weight:600}
@@ -20,7 +21,7 @@ h2,h3{color:var(--sun)}
 .in2 h3{margin:0 0 8px;font-size:21px}
 a{color:var(--red)}
 
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:none;padding:0;pointer-events:none}
+nav{position:sticky;top:0;z-index:9;background:none;padding:0;pointer-events:none}
 .row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:2px 0}nav a{pointer-events:auto}
 .row.main{position:relative;z-index:2;padding:8px 14px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .row.sub{position:relative;z-index:1;padding:8px 14px;background:color-mix(in srgb,var(--bg) 62%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
@@ -35,10 +36,10 @@ nav a.on{background:linear-gradient(135deg,var(--red),#0d7e7e);border-color:var(
 .row.sub a{font-size:12.5px;padding:3px 12px;border-radius:99px;border-color:var(--sky);background:rgba(255,255,255,.55);backdrop-filter:blur(6px);box-shadow:none;transform:none}.row.sub a.on{background:var(--ink);border-color:var(--ink);color:#fff}
 
 
-.hero{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;z-index:2}
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--sky-top);color:#fff;z-index:2}
 .hero svg{position:absolute;inset:0;width:100%;height:100%}
 .hero .sun-layer{overflow:visible}
-.hero .in{position:relative;padding:68px 20px 38px;max-width:900px;margin:0 auto;width:100%;text-shadow:0 1px 3px rgba(18,33,53,.95),0 2px 10px rgba(18,33,53,.65)}
+.hero .in{position:relative;padding:96px 20px 38px;max-width:900px;margin:0 auto;width:100%;text-shadow:0 1px 3px rgba(18,33,53,.95),0 2px 10px rgba(18,33,53,.65)}
 .hero small{letter-spacing:.4em;font-size:12px;opacity:.9}
 .hero h1{font-size:clamp(26px,6.5vw,42px);line-height:1.25;margin:6px 0;font-weight:800}
 .hero .d{font-size:17px;letter-spacing:.12em}
@@ -127,26 +128,51 @@ table{width:100%;border-collapse:collapse;font-size:14px}td{padding:6px 0;border
 @media(min-width:760px){body{font-size:16px}.card{padding:26px 28px}}
 
 .ft{
-  padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));
-  border-top:1px solid var(--sun);
-  background:var(--tint);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  border-top:3px double var(--gold);
+  background:var(--bg);
   color:var(--ink);
   text-align:center;
 }
+.ft-ornament{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:#936022;
+  font-size:11px;
+  line-height:1;
+}
+.ft-ornament::before,.ft-ornament::after{
+  content:"";
+  width:24px;
+  height:1px;
+  background:var(--gold);
+}
+.ft-blossom{color:var(--sun);font-size:16px}
 .ft-t{
   appearance:none;
   border:0;
-  padding:4px 12px;
+  padding:2px 10px;
   background:none;
-  color:inherit;
-  font:600 16px/1.5 "Shippori Mincho","Noto Serif TC",serif;
-  letter-spacing:.12em;
+  color:var(--sun);
+  font:800 clamp(20px,5vw,25px)/1.25 "Shippori Mincho",Georgia,serif;
+  letter-spacing:.04em;
+  cursor:pointer;
   touch-action:manipulation;
   user-select:none;
 }
 .ft-t:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
 .ft-s{margin:2px 0 0;color:var(--sub);font-size:12px;letter-spacing:.08em}
 .ft-secret{margin:10px auto 0;font-size:14px;color:var(--sun)}
+@media (prefers-reduced-motion:no-preference){
+  .ft-secret:not([hidden]){animation:footer-message-bounce 1.8s ease-in-out infinite}
+  @keyframes footer-message-bounce{
+    0%,45%,75%,100%{transform:translateY(0)}
+    60%{transform:translateY(-6px)}
+    85%{transform:translateY(-2px)}
+  }
+}
 
 main{position:relative;z-index:1}
 h2:before{width:26px;height:26px;background-image:none}
@@ -222,7 +248,8 @@ h2:before{width:26px;height:26px;background-image:none}
 <section id="todo"><h2>出發前待確認</h2><p class="en">BEFORE DEPARTURE</p><div class="card"><ul class="ck" id="todol"></ul></div></section>
 </main>
 <footer class="ft">
-<button class="ft-t" id="footer-farewell" type="button" aria-controls="footer-message" aria-expanded="false">旅途愉快</button>
+<div class="ft-ornament" aria-hidden="true"><span>✦</span><span class="ft-blossom">✿</span><span>✦</span></div>
+<button class="ft-t" id="footer-farewell" type="button" lang="en" aria-controls="footer-message" aria-expanded="false">Happy New Year</button>
 <p class="ft-s">2026 – 2027 ・ 京都 ・ 大阪 ・ 奈良</p>
 <div role="status"><p class="ft-secret" id="footer-message" hidden>希望大嚕喜歡，小嚕很愛很愛你喲</p></div>
 </footer>
@@ -257,9 +284,9 @@ tl:[['07:30','日本橋站出發'],['08:45–10:00','伏見稻荷大社、千本
 sp:[['伏見稻荷大社','伏見稲荷大社','稻荷神社總本宮，朱紅千本鳥居與狐狸神使，祈求商業、財運、工作順利。僅安排本殿與千本鳥居前段，不登稻荷山；參拜免費。','inari.jp'],['清水寺','清水寺','仁王門、三重塔、清水舞台、音羽瀑布。若遇降雪，雪中古寺非常漂亮。','kiyomizudera.or.jp'],['三年坂・二年坂','産寧坂','傳統町家老街，有抹茶甜點、八橋、糰子、京漬物、和菓子。'],['八坂神社歌牌始式','八坂神社','1/3 13:00 於能舞台，免費觀賞。參與者穿十二單等平安服飾，以百人一首競技。同日 08:00 元始祭、09:00 初能奉納；若想看能樂可改為早上直奔八坂、取消伏見稻荷。','ja.kyoto.travel/event/single.php?event_id=4401'],['圓山公園・八坂之塔・庚申堂','八坂庚申堂','祭典後散步休息；八坂之塔是京都經典街景；庚申堂有彩色「くくり猿」祈願，下午關門時間要留意。'],['祇園・花見小路','花見小路','傳統花街，町家與茶屋。部分私人巷弄禁止進入及攝影，不追逐、不擅拍藝妓與舞妓。'],['鴨川・四條河原町','四条河原町','鴨川適合看黃昏；四條河原町是購物美食商圈，適合晚餐與最後採買。']],
 tr:'去程：日本橋 → Metro 堺筋線 → 北濱 → 京阪電車 → 伏見稻荷站。\n伏見稻荷 → 清水五條站 → 步行 20–25 分 → 清水寺 → 三年坂 → 二年坂 → 八坂神社。\n返程：祇園四條 → 京阪 → 北濱 → 堺筋線 → 日本橋。',
 no:'1/3 為假期最後一天，人潮與返程交通皆為高峰。'},
-{id:'d5',n:5,date:'1/4（一）',t:'大阪・旅程尾聲',ov:'黑門市場、伴手禮、退房、關西機場、返回台灣',th:'享用最後一頓日式早餐、、採買伴手禮，帶著回憶返回台灣。',
-tl:[['07:3₀–₀8:₃₀','起床、整理行李'],['₀8:₃₀–₁₀:₀₀','黑門市場早餐、、伴手禮'],['₁₀:₀₀–₁₀:₃₀','返回住宿退房，確認行李'],['₁₀:₃₀–₁₂:₃₀','南海難波 → 關西機場 → 接駁巴士至 T2'],['₁₂:₃₀–₁₄:₄₅','報到、、托運、、安檢、、午餐、、免稅店'],['₁₅:₂₅ → ₁₇:₅₅','搭 Peach 返回桃園']],
-sp:[['黑門市場','','大阪傳統市場：生魚片、、海鮮丼、、烤干貝、、玉子燒、、和牛、、日本草莓、、甜點。新年部分店家可能休息或調整營業時間。','','kuromon.com']],
+{id:'d5',n:5,date:'1/4（一）',t:'大阪・旅程尾聲',ov:'黑門市場、伴手禮、退房、關西機場、返回台灣',th:'享用最後一頓日式早餐、採買伴手禮，帶著回憶返回台灣。',
+tl:[['07:30–08:30','起床、整理行李'],['08:30–10:00','黑門市場早餐、伴手禮'],['10:00–10:30','返回住宿退房，確認行李'],['10:30–12:30','南海難波 → 關西機場 → 接駁巴士至 T2'],['12:30–14:45','報到、托運、安檢、午餐、免稅店'],['15:25 → 17:55','搭 Peach 返回桃園']],
+sp:[['黑門市場','黒門市場','大阪傳統市場：生魚片、海鮮丼、烤干貝、玉子燒、和牛、日本草莓、甜點。新年部分店家可能休息或調整營業時間。','kuromon.com']],
 tr:'住宿 → 南海難波 → 空港急行／Rapi:t → 關西機場站 → 免費接駁巴士 → T2。預計 12:30 抵達。',
 no:'國際線報到截止 14:35，建議提前約 3 小時抵達，避開新年返程人潮。'}];
 
