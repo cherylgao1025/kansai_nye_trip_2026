@@ -37,8 +37,61 @@ nav a.on{background:linear-gradient(135deg,var(--red),#0d7e7e);border-color:var(
 
 
 .hero{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--sky-top);color:#fff;z-index:2}
-.hero svg{position:absolute;inset:0;width:100%;height:100%}
-.hero .sun-layer{overflow:visible}
+.hero svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero:after{pointer-events:none}
+.sky-trigger{position:absolute;inset:0;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.hero:has(.sky-trigger:focus-visible)::before{content:"";position:absolute;inset:3px;z-index:1;border:2px solid #FFF1D7;pointer-events:none}
+.night-sky,.hero-fireworks{opacity:0}
+.hero.is-night .night-sky,.hero.is-night .hero-fireworks{opacity:1}
+.hero.is-night .terrain{filter:brightness(.54) saturate(.78)}
+.hero.is-night .sun-trigger > circle{fill:#FFF0BE}
+@media (prefers-reduced-motion:no-preference){
+  .night-sky{transition:opacity .45s}
+  .hero .terrain{transition:filter .45s}
+  .hero.is-night .firework-rays{animation:sky-firework 2.9s cubic-bezier(.18,.6,.42,1) infinite backwards}
+  .hero.is-night .firework-rays.second{animation-delay:.36s}
+  .hero.is-night .firework-rays.third{animation-delay:.74s}
+  @keyframes sky-firework{
+    0%{opacity:0;transform:scale(.12)}
+    13%{opacity:1}
+    49%{opacity:.8}
+    78%,100%{opacity:0;transform:scale(1.28)}
+  }
+}
+.hero .sun-layer{overflow:visible;pointer-events:none}
+.hero .terrain,.hero .in{pointer-events:none}
+.hero.is-peeking .in{visibility:hidden}
+.sun-trigger{pointer-events:visiblePainted;cursor:pointer}
+.sun-trigger:focus-visible > circle{stroke:var(--card);stroke-width:3}
+.sun-surprise{visibility:hidden;transform:translateY(65px);pointer-events:none}
+.sun-surprise.is-peeking{visibility:visible;transform:translateY(0)}
+.hero-note{position:absolute;top:10px;left:50%;transform:translateX(-50%);margin:0;padding:4px 12px;border-radius:99px;background:var(--card);color:var(--sun);font-size:14px;font-weight:600;white-space:nowrap;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+  .sun-surprise{transition:transform .85s ease-in-out,visibility 0s linear .85s}
+  .sun-surprise.is-peeking{transition:transform .55s ease-out,visibility 0s}
+  .hero .in{transition:visibility 0s linear .85s}
+  .hero.is-peeking .in{transition-delay:0s}
+}
+.egg-trigger{padding:0 5px;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+.city-stamp{display:inline-grid;place-items:center;min-width:36px;min-height:36px;padding:2px;vertical-align:middle;color:#886638;border-radius:50%}
+.city-stamp svg,.postcard-seals svg{display:block;width:31px;height:31px}
+.city-stamp[aria-pressed="true"]{color:var(--sun);background:#FCECE4}
+.stamp-status{margin-left:5px;font-size:12px;color:var(--ink)}
+.flight-note,.postcard{border:1px solid var(--gold);border-radius:12px;background:var(--card);color:var(--ink)}
+.flight-note{position:relative;margin:10px 0 6px;padding:12px 16px 12px 20px;border-left:4px double var(--sun);font-size:14px;background:linear-gradient(135deg,#FFFDF8,#F8EDD9)}
+.flight-note span{display:block;font-size:11px;letter-spacing:.14em;color:var(--sun)}
+.flight-note p{margin:4px 0 0}
+.postcard{width:min(420px,calc(100% - 32px));padding:22px 16px;text-align:center;background:repeating-linear-gradient(135deg,#C8191E 0 9px,#FFFDF8 9px 18px,#D6B386 18px 27px,#FFFDF8 27px 36px) top / 100% 6px no-repeat,var(--card)}
+.postcard::backdrop{background:rgba(29,55,94,.45)}
+.postcard-inner{position:relative;border:1px solid var(--gold);padding:12px}
+.postcard-dateline{margin:0;color:#886638;font-size:11px;letter-spacing:.12em}
+.postcard h2{display:block;font-size:clamp(19px,5vw,26px);margin:5px 0 0}
+.postcard h2::before{content:none}
+.postcard-seals{display:flex;justify-content:center;gap:10px;margin:12px 0;color:var(--sun)}
+.postcard-seals svg:nth-child(2){transform:rotate(-9deg)}
+.postcard-message{margin:8px 0;font-size:15px}
+.postcard-signature{margin:0 0 12px;font-family:"Shippori Mincho",serif;color:var(--sun)}
+.postcard button{padding:4px 14px;border:1px solid var(--gold);border-radius:99px;background:var(--tint);color:var(--ink);font:inherit;cursor:pointer}
 .hero .in{position:relative;padding:96px 20px 38px;max-width:900px;margin:0 auto;width:100%;text-shadow:0 1px 3px rgba(18,33,53,.95),0 2px 10px rgba(18,33,53,.65)}
 .hero small{letter-spacing:.4em;font-size:12px;opacity:.9}
 .hero h1{font-size:clamp(26px,6.5vw,42px);line-height:1.25;margin:6px 0;font-weight:800}
@@ -165,6 +218,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td{padding:6px 0;border
 .ft-t:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
 .ft-s{margin:2px 0 0;color:var(--sub);font-size:12px;letter-spacing:.08em}
 .ft-secret{margin:10px auto 0;font-size:14px;color:var(--sun)}
+.secret-icon{color:#98621F;white-space:nowrap;font-size:.85em}
 @media (prefers-reduced-motion:no-preference){
   .ft-secret:not([hidden]){animation:footer-message-bounce 1.8s ease-in-out infinite}
   @keyframes footer-message-bounce{
@@ -196,6 +250,7 @@ h2:before{width:26px;height:26px;background-image:none}
 <body>
 <nav id="nav"></nav>
 <header class="hero" id="top">
+<button class="sky-trigger" id="sky-trigger" type="button" aria-label="夜空煙火" aria-pressed="false"></button>
 <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 <defs>
   <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
@@ -204,13 +259,57 @@ h2:before{width:26px;height:26px;background-image:none}
     <stop offset=".85" stop-color="#F4EFE2"/>
     <stop offset="1" stop-color="#D6B386"/>
   </linearGradient>
+  <linearGradient id="hero-night" x2="0" y2="1">
+    <stop offset="0" stop-color="#101831"/>
+    <stop offset="1" stop-color="#354268"/>
+  </linearGradient>
+  <g id="firework-shape" fill="none" stroke="currentColor" stroke-linecap="round">
+    <path d="M0-8V-23M0 8V23M8 0H23M-8 0H-23M6-6L17-17M-6 6L-17 17M6 6L17 17M-6-6L-17-17" stroke-width="1.5"/>
+    <path d="M9-21h.01m12 12h.01m0 18h.01m-12 12h.01m-18 0h.01m-12-12h.01m0-18h.01m12-12h.01" stroke-width="2.4"/>
+  </g>
 </defs>
 <rect width="400" height="260" fill="url(#hero-sky)"/>
+<rect class="night-sky" width="400" height="260" fill="url(#hero-night)"/>
+<g class="hero-fireworks">
+  <g transform="translate(94 100)" color="#FFD180"><use class="firework-rays" href="#firework-shape"/></g>
+  <g transform="translate(309 110) scale(1.22)" color="#FC9CB5"><use class="firework-rays second" href="#firework-shape"/></g>
+  <g transform="translate(345 72) scale(.65)" color="#A9E2E3"><use class="firework-rays third" href="#firework-shape"/></g>
+</g>
 </svg>
-<svg class="sun-layer" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<svg class="sun-layer" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+<g class="sun-trigger" id="sun-trigger" role="button" tabindex="0" aria-label="紅太陽" aria-controls="sun-message" aria-expanded="false">
 <circle cx="200" cy="114" r="62" fill="var(--sun)"/>
+</g>
+<g class="sun-surprise" aria-hidden="true">
+<g transform="translate(168 147) scale(1.22)" stroke="#695543" stroke-width="1" stroke-linejoin="round">
+  <path d="M-22 15L-15-7H15L22 15Z" fill="#B69C77"/>
+  <path d="M-17-1H17M-19 5H19M-6-7L-7-1M7-1L8 5" fill="none" stroke="#91795E" stroke-width=".75"/>
+  <path d="M-14-18H14V-7H-14Z M-10-29H10V-18H-10Z M-6-40H6V-29H-6Z" fill="#FFF2D4"/>
+  <path d="M-10-39Q-3-41 0-47Q3-41 10-39Q4-37 0-39Q-4-37-10-39Z M-15-28Q-5-30 0-35Q5-30 15-28L11-26H-11Z M-20-17Q-7-19 0-24Q7-19 20-17L15-15H-15Z" fill="#276B61"/>
+  <path d="M-2-7v-5h4v5M-9-12v2M9-12v2M-5-24v3M5-24v3" fill="none" stroke-linecap="round"/>
+  <path d="M-3-44l-2-2M3-44l2-2" stroke="#AD7332" stroke-width="1.5" stroke-linecap="round"/>
+</g>
+</g>
+<g class="sun-surprise" id="sun-deer" aria-hidden="true">
+  <g transform="translate(235 109)" stroke="#713B28" stroke-width="1.1" stroke-linejoin="round">
+    <path d="M-6-10Q-7-17-12-23M-8-16Q-13-17-15-20M-10-20Q-8-22-9-25 M6-10Q7-17 12-23M8-16Q13-17 15-20M10-20Q8-22 9-25" fill="none" stroke="#6D3A26" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M-10-6Q-21-6-20-17Q-9-17-6-10M10-6Q21-6 20-17Q9-17 6-10" fill="#B87544"/>
+    <path d="M-11-8Q-17-9-17-14Q-11-14-9-10M11-8Q17-9 17-14Q11-14 9-10" fill="#F3B0A2" stroke="none"/>
+    <path d="M-7 6H7C7 15 9 18 12 22C17 28 18 38 18 49H-18C-18 38-17 28-12 22C-9 18-7 15-7 6Z" fill="#B87544"/>
+    <path d="M-4 10Q0 12 4 10C4 18 8 21 8 26Q7 33 0 36Q-7 33-8 26C-8 21-4 18-4 10Z" fill="#F9E1B9" stroke="none"/>
+    <path d="M-13 1C-13-9-7-13 0-13S13-9 13 1C13 8 7 11 0 11S-13 8-13 1Z" fill="#CF915E"/>
+    <path d="M-10 4Q-7 0-3 2Q0 4 3 2Q7 0 10 4Q8 10 0 10Q-8 10-10 4Z" fill="#FFF1D7" stroke="none"/>
+    <path d="M-4-7v.6M0-9v.6M4-7v.6" stroke="#FFF1D7" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="-5.5" cy="-1.5" r="1.15" fill="#48291F" stroke="none"/>
+    <circle cx="5.5" cy="-1.5" r="1.15" fill="#48291F" stroke="none"/>
+    <ellipse cx="-8" cy="2.5" rx="2.2" ry="1.1" fill="#E98D83" stroke="none"/>
+    <ellipse cx="8" cy="2.5" rx="2.2" ry="1.1" fill="#E98D83" stroke="none"/>
+    <path d="M-1.8 3Q0 2 1.8 3L0 4.5Z" fill="#48291F" stroke="none"/>
+    <path d="M0 4.4V5.6M-2.5 6Q-1.5 7 0 5.6Q1.5 7 2.5 6" fill="none" stroke-linecap="round"/>
+  </g>
+</g>
 </svg>
-<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<svg class="terrain" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 <path d="M0 180 L65 135 L130 165 L165 142 L196 122 L202 118 L210 119 L216 123 L250 142 L285 162 L345 130 L400 160 V260 H0Z" fill="#7BB6DD"/>
 <path d="M0 202 L85 162 L165 196 L255 150 L335 192 L400 170 V260 H0Z" fill="#269B9F"/>
 <path d="M165 142 L196 122 L202 118 L210 119 L216 123 L250 142 L235 137 Q231 135 226 137 L218 141 L211 134 Q207 130 203 135 L195 145 L191 140 Q188 136 183 138 Z" fill="#F7FAFC"/>
@@ -222,6 +321,7 @@ h2:before{width:26px;height:26px;background-image:none}
 <h1>大嚕與小嚕的跨年之旅</h1>
 <div class="d serif">2026.12.31 ー 2027.1.4</div>
 <div class="chips"><span>五天四夜</span><span>大阪・奈良・京都</span></div></div>
+<div role="status"><p class="hero-note" id="sun-message" hidden>登登登！被你找到啦！</p></div>
 </header>
 <main>
 <section id="ov"><h2>行程總覽</h2><p class="en">OVERVIEW</p><div class="grid" id="ovg"></div></section>
@@ -247,11 +347,21 @@ h2:before{width:26px;height:26px;background-image:none}
 <section id="pack"><h2>行李準備</h2><p class="en">PACKING・0–10°C，山區可能低於零度</p><div class="card"><ul id="packl"></ul></div></section>
 <section id="todo"><h2>出發前待確認</h2><p class="en">BEFORE DEPARTURE</p><div class="card"><ul class="ck" id="todol"></ul></div></section>
 </main>
+<dialog class="postcard" id="stamp-postcard" aria-labelledby="postcard-title">
+<div class="postcard-inner">
+<p class="postcard-dateline">跨年旅行 ・ 五日印章收集完成</p>
+<h2 id="postcard-title">給大嚕的新年明信片</h2>
+<div class="postcard-seals" aria-hidden="true"></div>
+<p class="postcard-message">謝謝嚕寶陪小嚕一起來日本玩<br>小嚕真的很開心唷<br>希望接下來還能一起去很多地方玩<br>一起努力賺錢打拼</p>
+<p class="postcard-signature">by 愛你a煞气小嚕<br><time datetime="2026-11-26">2026.11.26</time></p>
+<form method="dialog"><button>收好明信片</button></form>
+</div>
+</dialog>
 <footer class="ft">
 <div class="ft-ornament" aria-hidden="true"><span>✦</span><span class="ft-blossom">✿</span><span>✦</span></div>
 <button class="ft-t" id="footer-farewell" type="button" lang="en" aria-controls="footer-message" aria-expanded="false">Happy New Year</button>
 <p class="ft-s">2026 – 2027 ・ 京都 ・ 大阪 ・ 奈良</p>
-<div role="status"><p class="ft-secret" id="footer-message" hidden>希望大嚕喜歡，小嚕很愛很愛你喲</p></div>
+<div role="status"><p class="ft-secret" id="footer-message" hidden><span class="secret-icon" aria-hidden="true">✦ ♡</span> 希望大嚕喜歡，小嚕很愛很愛你喲 <span class="secret-icon" aria-hidden="true">♡ ✦</span></p></div>
 </footer>
 <script>
 const footerFarewell = document.getElementById('footer-farewell');
@@ -292,6 +402,97 @@ no:'國際線報到截止 14:35，建議提前約 3 小時抵達，避開新年�
 
 document.getElementById('ovg').innerHTML=D.map(d=>`<a class="card ov" href="#${d.id}"><b>DAY ${d.n}｜${d.date}</b><h3>${d.t}</h3><p>${d.ov}</p></a>`).join('');
 document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card"><b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2"><h3>景點與美食</h3>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong> ${d.no}</div></section>`).join('');
+const skyTrigger = document.getElementById('sky-trigger');
+skyTrigger.addEventListener('click', () => {
+  const night = skyTrigger.closest('.hero').classList.toggle('is-night');
+  skyTrigger.setAttribute('aria-pressed', String(night));
+  sunTrigger.setAttribute('aria-label', night ? '月亮' : '紅太陽');
+});
+
+const sunTrigger = document.getElementById('sun-trigger');
+const sunMessage = document.getElementById('sun-message');
+function toggleSunDeer(){
+  const show = sunMessage.hidden;
+  sunMessage.hidden = !show;
+  sunTrigger.closest('.hero').classList.toggle('is-peeking', show);
+  document.querySelectorAll('.sun-surprise').forEach(figure => {
+    figure.classList.toggle('is-peeking', show);
+  });
+  sunTrigger.setAttribute('aria-expanded', String(show));
+}
+sunTrigger.addEventListener('click', toggleSunDeer);
+sunTrigger.addEventListener('keydown', event => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    if (!event.repeat) toggleSunDeer();
+  }
+});
+
+const stampStops = [
+  ['d1','跨年燈籠','M10 5h4m-2 0v2m-2 11h4m-2 0v2M7 12c0-3 2-5 5-5s5 2 5 5-2 6-5 6-5-3-5-6zm2-2h6m-7 3h8m-7 3h6'],
+  ['d2','大阪祈福','M7 11l5-3 5 3M8 11h8v3H8zM5 15h14M7 15v4h10v-4M11 19v-2h2v2'],
+  ['d3','奈良','M9.5 10L8 6L6.5 5M8 6l.7-2M14.5 10L16 6l1.5-1M16 6l-.7-2M8 13q-3 0-3.5-3 3-.5 4.5 1m7 2q3 0 3.5-3-3-.5-4.5 1M7.5 14.5c0-3 2-4.5 4.5-4.5s4.5 1.5 4.5 4.5S14.5 19 12 19s-4.5-1.5-4.5-4.5Zm2.5-.5h.1m3.9 0h.1M11.4 16.5h1.2'],
+  ['d4','京都','M5 8q7 2 14 0M7 10h10M9 10l-1 9m7-9 1 9M6 13h12M12 10v3'],
+  ['d5','回程飛機','M5 14l5-2 2-6 2-.5-.5 5 4-1.5L20 10l-6 4-.5 4-1.5 1-1-4-3.5 1Z'],
+];
+function drawCityStamp(motif){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="11"/><circle cx="12" cy="12" r="9" stroke-width=".55" stroke-dasharray="1 1.3"/><path stroke-width="1.1" d="' + motif + '"/></svg>';
+}
+const stampKey = 'kx-city-stamps';
+const savedStamps = readState(stampKey) || {};
+const postcard = document.getElementById('stamp-postcard');
+postcard.querySelector('.postcard-seals').innerHTML = stampStops.map(([, , motif]) => drawCityStamp(motif)).join('');
+const stampButtons = stampStops.map(([day, city, motif]) => {
+  const label = document.querySelector('#' + day + ' .dt2');
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'egg-trigger city-stamp';
+  button.innerHTML = drawCityStamp(motif);
+  button.setAttribute('aria-label', city + '印章');
+  button.setAttribute('aria-pressed', String(Boolean(savedStamps[day])));
+  const status = document.createElement('span');
+  status.className = 'stamp-status';
+  status.setAttribute('role', 'status');
+  label.append(' ', button, status);
+
+  button.addEventListener('click', () => {
+    const collected = !savedStamps[day];
+    savedStamps[day] = collected;
+    writeState(stampKey, savedStamps);
+    updateStampButtons();
+    const total = stampStops.filter(([id]) => savedStamps[id]).length;
+    status.textContent = city + (collected ? '已蓋章' : '已取消') + ' · ' + total + '/' + stampStops.length;
+    if (collected && total === stampStops.length) postcard.showModal();
+  });
+  return [day, button];
+});
+function updateStampButtons(){
+  for (const [day, button] of stampButtons) {
+    button.setAttribute('aria-pressed', String(Boolean(savedStamps[day])));
+  }
+}
+updateStampButtons();
+
+const returnFlight = document.querySelector('#d5 .tl li:last-child');
+const flightTime = returnFlight.querySelector('b');
+const flightButton = document.createElement('button');
+flightButton.type = 'button';
+flightButton.className = 'egg-trigger';
+flightButton.textContent = flightTime.textContent;
+flightButton.setAttribute('aria-expanded', 'false');
+flightButton.setAttribute('aria-controls', 'return-flight-note');
+flightTime.replaceChildren(flightButton);
+const flightNote = document.createElement('div');
+flightNote.className = 'flight-note';
+flightNote.id = 'return-flight-note';
+flightNote.hidden = true;
+flightNote.innerHTML = '<span>✦ 給大嚕的回程紙條</span><p>下次大嚕想去哪裡呢？<br>只要有大嚕，哪裡都想去。<br>♡ 小嚕愛你</p>';
+returnFlight.append(flightNote);
+flightButton.addEventListener('click', () => {
+  flightNote.hidden = !flightNote.hidden;
+  flightButton.setAttribute('aria-expanded', String(!flightNote.hidden));
+});
+
 const snow=[['貴船神社','京都北部山區，朱紅燈籠石階與雪景。出町柳 → 叡山電鐵 → 貴船口 → 巴士 33 號；單程約 100–130 分，建議半天。山區有雪可取消伏見稻荷與清水寺改來此，大雪須確認電車巴士。'],['金閣寺','金色舍利殿與鏡湖池雪景。市區積雪時可改為上午金閣寺，再趕 13:00 八坂神社。'],['嵐山','竹林、渡月橋、天龍寺。不列固定行程，以免京都太緊湊，嵐山下雪再考慮。'],['鞍馬寺','可與貴船搭配，但積雪時不建議貿然走貴船與鞍馬間的山間步道。']];
 document.getElementById('snowl').innerHTML=snow.map((s,i)=>`<details><summary><div>備案${i+1}：${s[0]}</div></summary><p>${s[1]}</p></details>`).join('');
 
