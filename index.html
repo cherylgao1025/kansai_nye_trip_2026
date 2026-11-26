@@ -22,9 +22,9 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-
 nav a{flex:none;white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;padding:4px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card)}
 nav a.on{background:var(--red);border-color:var(--red);color:#fff}
 .row.sub a{font-size:12.5px;padding:2px 12px;border-color:var(--sky);background:transparent}.row.sub a.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.hero{position:relative;min-height:56vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;color:#fff}
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff}
 .hero svg{position:absolute;inset:0;width:100%;height:100%}
-.hero .in{position:relative;padding:14px 20px 28px;max-width:900px;margin:auto;width:100%;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.hero .in{position:relative;padding:24px 20px 38px;max-width:900px;margin:0 auto;width:100%;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .hero small{letter-spacing:.4em;font-size:12px;opacity:.9}
 .hero h1{font-size:clamp(26px,6.5vw,42px);line-height:1.25;margin:6px 0;font-weight:800}
 .hero .d{font-size:17px;letter-spacing:.12em}
@@ -37,7 +37,9 @@ h2:before{content:"🏮";font-size:18px}
 .en{color:var(--red);letter-spacing:.3em;font-size:11px;margin:0 0 16px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:12px 0;box-shadow:0 6px 20px -14px rgba(60,40,20,.4)}
 .card.in2{outline:1px solid var(--line);outline-offset:-8px}
-.card{position:relative;overflow:hidden}.card:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(45deg,var(--gold) 0 6px,var(--tint) 6px 12px)}.hero .note{display:inline-block;margin:12px 0 0;padding:4px 16px;border-radius:99px;font-size:15px;background:rgba(244,239,226,.2);border:1px solid rgba(255,255,255,.65)}
+.card{position:relative;overflow:hidden}
+.mizuhiki{display:block;width:100%;max-width:280px;height:28px;margin:0 auto 12px}
+.hero .note{display:inline-block;margin:12px 0 0;padding:4px 16px;border-radius:99px;font-size:15px;background:rgba(244,239,226,.2);border:1px solid rgba(255,255,255,.65)}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .ov{text-decoration:none;color:var(--ink);display:block;margin:0}
 .ov b{font-family:"Shippori Mincho",serif;color:var(--red);font-size:13px;letter-spacing:.15em}
@@ -70,17 +72,37 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:30px 16px 50px;
 <body>
 <nav id="nav"></nav>
 <header class="hero" id="top">
-<svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f93c6"/><stop offset=".5" stop-color="#9fcbe8"/><stop offset=".8" stop-color="#F4EFE2"/><stop offset="1" stop-color="#D6B386"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1D375E" stop-opacity=".8"/></linearGradient></defs>
-<rect width="400" height="600" fill="url(#s)"/>
-<g fill="#fff" opacity=".8"><circle cx="40" cy="60" r="1.5"/><circle cx="120" cy="30" r="1"/><circle cx="300" cy="50" r="1.5"/><circle cx="350" cy="110" r="1"/><circle cx="210" cy="90" r="1"/></g>
-<circle cx="280" cy="270" r="62" fill="#fff6dd" opacity=".95"/>
-<path d="M0 360 L70 300 L130 345 L210 280 L290 350 L350 310 L400 345 V600 H0Z" fill="#7BB6DD" opacity=".85"/>
-<path d="M0 400 L90 345 L170 395 L260 335 L340 390 L400 360 V600 H0Z" fill="#129A9A" opacity=".8"/>
-<path d="M185 318 L210 280 L236 322 Q210 312 185 318Z" fill="#fff" opacity=".92"/><g fill="#F4EFE2" opacity=".95"><circle cx="50" cy="150" r="11"/><circle cx="68" cy="143" r="14"/><circle cx="88" cy="151" r="10"/><rect x="40" y="150" width="58" height="11" rx="5"/></g><g fill="#D6B386" opacity=".95"><circle cx="300" cy="110" r="9"/><circle cx="315" cy="104" r="12"/><circle cx="332" cy="111" r="8"/><rect x="292" y="110" width="48" height="9" rx="4"/></g><g stroke="#D6B386" stroke-width="2"><line x1="36" y1="0" x2="36" y2="36"/><line x1="364" y1="0" x2="364" y2="36"/></g><g fill="#129A9A"><ellipse cx="36" cy="54" rx="15" ry="19"/></g><g fill="#1D375E"><ellipse cx="364" cy="54" rx="15" ry="19"/><rect x="28" y="34" width="16" height="4"/><rect x="28" y="70" width="16" height="4"/><rect x="356" y="34" width="16" height="4"/><rect x="356" y="70" width="16" height="4"/></g><g fill="#1D375E"><rect x="42" y="330" width="6" height="14"/><path d="M28 360 L45 338 L62 360Z"/><path d="M24 384 L45 360 L66 384Z"/><path d="M20 410 L45 384 L70 410Z"/><rect x="30" y="410" width="30" height="32"/></g><g><rect x="360" y="404" width="6" height="40" fill="#1D375E"/><g fill="#0e7a7a"><path d="M343 412 Q363 384 383 412Z"/><path d="M348 394 Q363 368 378 394Z"/><path d="M353 376 Q363 354 373 376Z"/></g></g><defs><g id="fl"><g fill="#F4EFE2"><circle cy="-6" r="4"/><circle cx="6" r="4"/><circle cy="6" r="4"/><circle cx="-6" r="4"/></g><circle r="2.5" fill="#D6B386"/></g></defs><use href="#fl" x="30" y="230"/><use href="#fl" x="372" y="300"/><use href="#fl" x="150" y="470"/><use href="#fl" x="250" y="480"/><g transform="translate(318 462)"><path d="M0 14 Q-6 40 6 52 h44 Q62 40 56 14Z" fill="#D6B386"/><path d="M8 14 q20-14 40 0" fill="none" stroke="#F4EFE2" stroke-width="4"/><text x="28" y="40" font-size="13" text-anchor="middle" fill="#1D375E" font-family="serif">初売</text></g><g fill="#1D375E"><rect x="95" y="255" width="14" height="190"/><rect x="291" y="255" width="14" height="190"/><path d="M70 250 Q200 270 330 250 L338 232 Q200 252 62 232Z"/><rect x="104" y="278" width="192" height="11"/></g>
-<g fill="#fff" opacity=".95"><circle cx="60" cy="190" r="3"/><circle cx="330" cy="170" r="2.5"/><circle cx="180" cy="140" r="2"/><circle cx="240" cy="210" r="3"/><circle cx="20" cy="260" r="2"/></g>
-<path d="M0 440 Q100 420 200 445 T400 430 V600 H0Z" fill="#129A9A"/>
-<rect y="250" width="400" height="350" fill="url(#g)"/>
+<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs>
+  <linearGradient id="s" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#4f93c6"/>
+    <stop offset=".55" stop-color="#9fcbe8"/>
+    <stop offset=".85" stop-color="#F4EFE2"/>
+    <stop offset="1" stop-color="#D6B386"/>
+  </linearGradient>
+  <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1D375E" stop-opacity=".15"/>
+    <stop offset="1" stop-color="#1D375E" stop-opacity=".72"/>
+  </linearGradient>
+</defs>
+<rect width="400" height="260" fill="url(#s)"/>
+<g fill="#fff" opacity=".85">
+  <circle cx="45" cy="32" r="1.5"/><circle cx="135" cy="20" r="1"/><circle cx="290" cy="26" r="1.5"/><circle cx="355" cy="48" r="1"/>
+</g>
+<circle cx="315" cy="115" r="34" fill="#fff6dd" opacity=".9"/>
+<path d="M0 180 L65 135 L130 165 L205 118 L285 162 L345 130 L400 160 V260 H0Z" fill="#7BB6DD" opacity=".85"/>
+<path d="M0 202 L85 162 L165 196 L255 150 L335 192 L400 170 V260 H0Z" fill="#129A9A" opacity=".8"/>
+<path d="M186 142 L205 118 L225 145 Q205 137 186 142Z" fill="#fff" opacity=".92"/>
+<g fill="#F4EFE2" opacity=".92">
+  <circle cx="52" cy="66" r="8"/><circle cx="66" cy="60" r="10"/><circle cx="82" cy="67" r="7"/><rect x="44" y="66" width="46" height="8" rx="4"/>
+</g>
+<g fill="#1D375E" opacity=".88">
+  <rect x="308" y="92" width="10" height="88"/>
+  <rect x="366" y="92" width="10" height="88"/>
+  <path d="M298 90 Q342 98 386 90 L389 82 Q342 90 295 82 Z"/>
+  <rect x="314" y="104" width="56" height="6"/>
+</g>
+<rect width="400" height="260" fill="url(#g)"/>
 </svg>
 <div class="in"><small>KYOTO · OSAKA · NARA</small>
 <h1>大嚕與小嚕的跨年之旅</h1>
@@ -115,6 +137,7 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:30px 16px 50px;
 <footer>良い旅を ・ 2026–2027</footer>
 <script>
 const M=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+const MIZUHIKI=`<svg class="mizuhiki" viewBox="0 0 280 28" fill="none" aria-hidden="true"><line x1="8" y1="12" x2="126" y2="12" stroke="#1D375E" stroke-width="1.6"/><line x1="8" y1="16" x2="126" y2="16" stroke="#D6B386" stroke-width="1.6"/><line x1="154" y1="12" x2="272" y2="12" stroke="#1D375E" stroke-width="1.6"/><line x1="154" y1="16" x2="272" y2="16" stroke="#D6B386" stroke-width="1.6"/><path d="M140 14 C124 4, 118 18, 140 14 C162 18, 156 4, 140 14 Z" stroke="#1D375E" stroke-width="1.8" fill="none"/><path d="M140 14 L129 24 M140 14 L151 24" stroke="#D6B386" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 const D=[
 {id:'d1',n:1,date:'12/31（四）',t:'大阪・迎接新年',ov:'關西機場、入住、大阪天滿宮、天神橋筋、跨年初詣',th:'抵達日本、入住道頓堀，前往大阪天滿宮體驗年末祭典，迎接 2027。',
 tl:[['06:40','桃園機場報到、托運'],['09:40 → 13:10','搭 Peach 飛大阪，抵達 KIX 第二航廈'],['13:10–15:40','入境、領行李、免費接駁巴士 → 南海電鐵至難波站'],['16:00–16:30','步行至住宿，自助入住'],['17:00–18:30','大阪天滿宮年末神事、除夜祭（依官方公告）'],['18:30–20:00','晚餐・年越蕎麥麵'],['20:00–22:00','天神橋筋商店街、中之島散步'],['23:00–00:30','天滿宮跨年、迎接 2027、新年初詣'],['00:30–01:30','計程車或步行返回住宿']],
@@ -143,14 +166,14 @@ tr:'住宿 → 南海難波 → 空港急行／Rapi:t → 關西機場站 → �
 no:'國際線報到截止 14:35，建議提前約 3 小時抵達，避開新年返程人潮。'}];
 const L=(a,k)=>a.map(x=>`<${k}>${x}</${k}>`).join('');
 
-document.getElementById('ovg').innerHTML=D.map(d=>`<a class="card ov" href="#${d.id}"><b>DAY ${d.n}｜${d.date}</b><h3>${d.t}</h3><p>${d.ov}</p></a>`).join('');
-document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="dayh"></div><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card"><b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2"><b class="serif">景點與美食</b>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong>　${d.no}</div></section>`).join('');
+document.getElementById('ovg').innerHTML=D.map(d=>`<a class="card ov" href="#${d.id}">${MIZUHIKI}<b>DAY ${d.n}｜${d.date}</b><h3>${d.t}</h3><p>${d.ov}</p></a>`).join('');
+document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="dayh"></div><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card">${MIZUHIKI}<b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2">${MIZUHIKI}<b class="serif">景點與美食</b>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong> ${d.no}</div></section>`).join('');
 const snow=[['貴船神社','京都北部山區，朱紅燈籠石階與雪景。出町柳 → 叡山電鐵 → 貴船口 → 巴士 33 號；單程約 100–130 分，建議半天。山區有雪可取消伏見稻荷與清水寺改來此，大雪須確認電車巴士。'],['金閣寺','金色舍利殿與鏡湖池雪景。市區積雪時可改為上午金閣寺，再趕 13:00 八坂神社。'],['嵐山','竹林、渡月橋、天龍寺。不列固定行程，以免京都太緊湊，嵐山下雪再考慮。'],['鞍馬寺','可與貴船搭配，但積雪時不建議貿然走貴船與鞍馬間的山間步道。']];
 document.getElementById('snowl').innerHTML=snow.map((s,i)=>`<details><summary><div>備案${i+1}：${s[0]}</div></summary><p>${s[1]}</p></details>`).join('');
 const F=[['大阪','章魚燒、大阪燒、串炸、燒肉、居酒屋、壽司、海鮮丼、年越蕎麥麵、蟹料理、河豚料理、黑門市場海鮮'],['奈良','元喜神雞白湯拉麵、沾麵、雜炊、中谷堂艾草麻糬'],['京都','抹茶甜點、抹茶冰淇淋、八橋、和菓子、日式糰子、京都湯豆腐、京都料理、京漬物']];
-document.getElementById('foodl').innerHTML=F.map(f=>`<b class="serif">${f[0]}</b><div class="tags" style="margin:6px 0 14px">${L(f[1].split('、'),'span')}</div>`).join('');
+document.getElementById('foodl').innerHTML=MIZUHIKI+F.map(f=>`<b class="serif">${f[0]}</b><div class="tags" style="margin:6px 0 14px">${L(f[1].split('、'),'span')}</div>`).join('');
 const C=[['初詣','新年第一次參拜神社或寺廟，祈求平安順利。'],['大祓式','祓除過去一年累積的穢氣與厄運。'],['除夜祭','感謝即將結束的一年，迎接新年。'],['歲旦祭','元旦舉行的新年正式神事。'],['巫女神樂','巫女手持神樂鈴、扇子，以傳統舞蹈祈福奉納。'],['獅子舞','除厄招福、健康長壽的祈福表演。'],['歌牌始式','新年歌牌奉納，展現古典文學與宮廷文化。'],['年越蕎麥麵','跨年夜吃，象徵長壽與斷厄。'],['初賣・福袋','商店新年首賣，常有折扣與福袋，象徵好運。']];
-document.getElementById('cul').innerHTML=C.map(c=>`<details><summary><div>${c[0]}</div></summary><p>${c[1]}</p></details>`).join('');
+document.getElementById('cul').innerHTML=MIZUHIKI+C.map(c=>`<details><summary><div>${c[0]}</div></summary><p>${c[1]}</p></details>`).join('');
 const H=[['12/31','部分商店餐廳提早打烊，晚上各地神社跨年祭典'],['1/1','元旦國定假日，初詣人潮眾多，部分百貨與餐廳休息'],['1/2','部分百貨開始初賣與福袋'],['1/3','假期最後一天，人潮與返程交通高峰'],['1/4','多數企業與機關恢復上班']];
 document.getElementById('hol').innerHTML=H.map(h=>`<li><b>${h[0]}</b>${h[1]}</li>`).join('');
 document.getElementById('holn').innerHTML='電車可能採假日時刻表；提前確認餐廳營業；熱門祭典預留排隊時間；備足現金（神社與小店）；提前預留機場報到時間；行程依人潮與交通彈性調整。';
