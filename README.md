@@ -1,5 +1,3 @@
-# 大嚕與小嚕跨年的愛之旅
+# 大嚕與小嚕跨年之旅
 
 京阪跨年旅行手帳網站（2026/12/31 – 2027/1/4）。純靜態單頁，無需建置。
-
-用 GitHub Pages 開啟：Settings → Pages → Deploy from a branch → main / (root)。
