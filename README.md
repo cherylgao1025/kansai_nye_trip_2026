@@ -1,0 +1,1 @@
+# kansai_nye_trip_2026
