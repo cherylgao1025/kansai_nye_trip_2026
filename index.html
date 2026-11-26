@@ -17,11 +17,12 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(110px + env(safe-area-inset-
 body{margin:0;background:var(--bg);color:var(--ink);font:300 15px/1.8 "Noto Sans TC",system-ui,sans-serif;background-image:radial-gradient(var(--s1) 2px,transparent 2.6px),radial-gradient(var(--s2) 1.5px,transparent 2px);background-size:46px 46px,31px 31px;background-position:0 0,17px 11px}
 h1,h2,h3,.serif{font-family:"Shippori Mincho","Noto Serif TC",serif;font-weight:600}
 a{color:var(--red)}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:8px 14px 6px}
-.row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0}.row.sub{margin-top:4px}
-nav a{flex:none;white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;padding:4px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card)}
-nav a.on{background:var(--red);border-color:var(--red);color:#fff}
-.row.sub a{font-size:12.5px;padding:2px 12px;border-color:var(--sky);background:transparent}.row.sub a.on{background:var(--ink);border-color:var(--ink);color:#fff}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:8px 14px 8px}
+.row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:2px 0}.row.sub{margin-top:6px}
+nav a{flex:none;white-space:nowrap;text-decoration:none;color:var(--ink);font-size:13.5px;padding:5px 14px;border:1px solid var(--line);border-radius:14px 14px 10px 10px;background:var(--card);display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 0 var(--tint);transition:.18s ease}
+nav a .ico{font-size:14px;line-height:1}
+nav a.on{background:linear-gradient(135deg,var(--red),#0d7e7e);border-color:var(--red);color:#fff;box-shadow:0 3px 10px -3px rgba(18,154,154,.55);transform:translateY(-1px)}
+.row.sub a{font-size:12.5px;padding:3px 12px;border-radius:99px;border-color:var(--sky);background:rgba(255,255,255,.75);box-shadow:none;transform:none}.row.sub a.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .hero{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff}
 .hero svg{position:absolute;inset:0;width:100%;height:100%}
 .hero .in{position:relative;padding:24px 20px 38px;max-width:900px;margin:0 auto;width:100%;text-shadow:0 1px 12px rgba(0,0,0,.35)}
@@ -34,14 +35,51 @@ main{max-width:900px;margin:auto;padding:0 16px 60px}
 section{margin-top:26px}section[hidden]{display:none}
 h2{font-size:26px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
 h2:before{content:"🏮";font-size:18px}
-.en{color:var(--red);letter-spacing:.3em;font-size:11px;margin:0 0 16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:12px 0;box-shadow:0 6px 20px -14px rgba(60,40,20,.4)}
-.card.in2{outline:1px solid var(--line);outline-offset:-8px}
-.card{position:relative;overflow:hidden}
-.mizuhiki{display:block;width:100%;max-width:280px;height:28px;margin:0 auto 12px}
+.en{color:var(--red);letter-spacing:.3em;font-size:11px;margin:0 0 24px}
+
+/* Gift-box top ribbon + Mizuhiki knot sitting outside the top edge of each card */
+.card {
+  position: relative;
+  overflow: visible;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  margin: 22px 0 14px;
+  box-shadow: 0 6px 20px -14px rgba(60, 40, 20, .4);
+}
+/* Twin cords meeting the bow-knot with no gap */
+.card:before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: -2px;
+  height: 6px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 0 0 / calc(50% - 12px) 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 0 4px / calc(50% - 12px) 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 100% 0 / calc(50% - 12px) 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 100% 4px / calc(50% - 12px) 2px no-repeat;
+}
+
+/* Bow-knot aligned directly with the cord ends */
+.card:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -17px;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 32px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 50' fill='none'%3E%3Cpath d='M80 26 C58 8, 46 34, 80 26 C114 34, 102 8, 80 26 Z' stroke='%231D375E' stroke-width='3.2' fill='none'/%3E%3Cpath d='M80 26 L62 45 M80 26 L98 45' stroke='%23D6B386' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
 .hero .note{display:inline-block;margin:12px 0 0;padding:4px 16px;border-radius:99px;font-size:15px;background:rgba(244,239,226,.2);border:1px solid rgba(255,255,255,.65)}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.ov{text-decoration:none;color:var(--ink);display:block;margin:0}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.ov{text-decoration:none;color:var(--ink);display:block;margin:18px 0 0}
 .ov b{font-family:"Shippori Mincho",serif;color:var(--red);font-size:13px;letter-spacing:.15em}
 .ov h3{margin:2px 0 6px;font-size:18px}.ov p{margin:0;font-size:13px;color:var(--sub);line-height:1.6}
 dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}dt{color:var(--sub)}dd{margin:0}
@@ -60,13 +98,16 @@ summary span{color:var(--sub);font-size:12px;font-weight:300;margin-left:6px}
 details p{margin:6px 0 4px;font-size:14px}
 .map{font-size:12px;border:1px solid var(--red);border-radius:99px;padding:1px 10px;text-decoration:none;display:inline-block;margin-top:4px}
 .box{position:relative;background:var(--tint);border-radius:14px;padding:12px 16px 12px 30px;font-size:14px;margin:10px 0}.box:before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;border-radius:14px 0 0 14px;background:conic-gradient(var(--gold) 25%,var(--bg) 0 50%,var(--gold) 0 75%,var(--bg) 0) 0 0/12px 12px}.box strong{color:var(--red);font-family:"Shippori Mincho",serif}
-.tags{display:flex;flex-wrap:wrap;gap:6px}.tags span{background:var(--tint);border-radius:99px;padding:1px 12px;font-size:13px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags label{display:inline-flex;align-items:center;gap:6px;background:var(--tint);border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:13px;cursor:pointer;user-select:none}
+.tags input{accent-color:var(--red);width:14px;height:14px;margin:0;cursor:pointer}
+.tags input:checked+span{text-decoration:line-through;color:var(--sub)}
 .ck{list-style:none;padding:0;margin:0;display:grid;gap:2px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .ck label{display:flex;gap:8px;align-items:flex-start;font-size:14px;padding:3px 0}.ck input{accent-color:var(--red);margin-top:6px;width:16px;height:16px}
 .ck input:checked+span{text-decoration:line-through;color:var(--sub)}
 table{width:100%;border-collapse:collapse;font-size:14px}td{padding:6px 0;border-bottom:1px dashed var(--line)}td:last-child{text-align:right}
 footer{text-align:center;color:var(--sub);font-size:12px;padding:30px 16px 50px;letter-spacing:.2em}
-@media(min-width:760px){body{font-size:16px}.card{padding:28px}}
+@media(min-width:760px){body{font-size:16px}.card{padding:26px 28px}}
 </style>
 </head>
 <body>
@@ -137,7 +178,6 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:30px 16px 50px;
 <footer>良い旅を ・ 2026–2027</footer>
 <script>
 const M=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
-const MIZUHIKI=`<svg class="mizuhiki" viewBox="0 0 280 28" fill="none" aria-hidden="true"><line x1="8" y1="12" x2="126" y2="12" stroke="#1D375E" stroke-width="1.6"/><line x1="8" y1="16" x2="126" y2="16" stroke="#D6B386" stroke-width="1.6"/><line x1="154" y1="12" x2="272" y2="12" stroke="#1D375E" stroke-width="1.6"/><line x1="154" y1="16" x2="272" y2="16" stroke="#D6B386" stroke-width="1.6"/><path d="M140 14 C124 4, 118 18, 140 14 C162 18, 156 4, 140 14 Z" stroke="#1D375E" stroke-width="1.8" fill="none"/><path d="M140 14 L129 24 M140 14 L151 24" stroke="#D6B386" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 const D=[
 {id:'d1',n:1,date:'12/31（四）',t:'大阪・迎接新年',ov:'關西機場、入住、大阪天滿宮、天神橋筋、跨年初詣',th:'抵達日本、入住道頓堀，前往大阪天滿宮體驗年末祭典，迎接 2027。',
 tl:[['06:40','桃園機場報到、托運'],['09:40 → 13:10','搭 Peach 飛大阪，抵達 KIX 第二航廈'],['13:10–15:40','入境、領行李、免費接駁巴士 → 南海電鐵至難波站'],['16:00–16:30','步行至住宿，自助入住'],['17:00–18:30','大阪天滿宮年末神事、除夜祭（依官方公告）'],['18:30–20:00','晚餐・年越蕎麥麵'],['20:00–22:00','天神橋筋商店街、中之島散步'],['23:00–00:30','天滿宮跨年、迎接 2027、新年初詣'],['00:30–01:30','計程車或步行返回住宿']],
@@ -164,31 +204,71 @@ tl:[['07:30–08:30','起床、整理行李'],['08:30–10:00','黑門市場早�
 sp:[['黑門市場','黒門市場','大阪傳統市場：生魚片、海鮮丼、烤干貝、玉子燒、和牛、日本草莓、甜點。新年部分店家可能休息或調整營業時間。','kuromon.com']],
 tr:'住宿 → 南海難波 → 空港急行／Rapi:t → 關西機場站 → 免費接駁巴士 → T2。預計 12:30 抵達。',
 no:'國際線報到截止 14:35，建議提前約 3 小時抵達，避開新年返程人潮。'}];
-const L=(a,k)=>a.map(x=>`<${k}>${x}</${k}>`).join('');
 
-document.getElementById('ovg').innerHTML=D.map(d=>`<a class="card ov" href="#${d.id}">${MIZUHIKI}<b>DAY ${d.n}｜${d.date}</b><h3>${d.t}</h3><p>${d.ov}</p></a>`).join('');
-document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="dayh"></div><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card">${MIZUHIKI}<b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2">${MIZUHIKI}<b class="serif">景點與美食</b>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong> ${d.no}</div></section>`).join('');
+document.getElementById('ovg').innerHTML=D.map(d=>`<a class="card ov" href="#${d.id}"><b>DAY ${d.n}｜${d.date}</b><h3>${d.t}</h3><p>${d.ov}</p></a>`).join('');
+document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card"><b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2"><b class="serif">景點與美食</b>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong> ${d.no}</div></section>`).join('');
 const snow=[['貴船神社','京都北部山區，朱紅燈籠石階與雪景。出町柳 → 叡山電鐵 → 貴船口 → 巴士 33 號；單程約 100–130 分，建議半天。山區有雪可取消伏見稻荷與清水寺改來此，大雪須確認電車巴士。'],['金閣寺','金色舍利殿與鏡湖池雪景。市區積雪時可改為上午金閣寺，再趕 13:00 八坂神社。'],['嵐山','竹林、渡月橋、天龍寺。不列固定行程，以免京都太緊湊，嵐山下雪再考慮。'],['鞍馬寺','可與貴船搭配，但積雪時不建議貿然走貴船與鞍馬間的山間步道。']];
 document.getElementById('snowl').innerHTML=snow.map((s,i)=>`<details><summary><div>備案${i+1}：${s[0]}</div></summary><p>${s[1]}</p></details>`).join('');
+
+// Local storage + cookie helper so state persists across app reopens
+function readState(key){
+  try{const raw=localStorage.getItem(key);if(raw)return JSON.parse(raw);}catch(e){}
+  const m=document.cookie.match(new RegExp('(?:^|; )'+encodeURIComponent(key)+'=([^;]*)'));
+  if(m){try{return JSON.parse(decodeURIComponent(m[1]));}catch(e){}}
+  return {};
+}
+function writeState(key,obj){
+  const str=JSON.stringify(obj);
+  try{localStorage.setItem(key,str);}catch(e){}
+  try{document.cookie=encodeURIComponent(key)+'='+encodeURIComponent(str)+';max-age=31536000;path=/;SameSite=Lax';}catch(e){}
+}
+
 const F=[['大阪','章魚燒、大阪燒、串炸、燒肉、居酒屋、壽司、海鮮丼、年越蕎麥麵、蟹料理、河豚料理、黑門市場海鮮'],['奈良','元喜神雞白湯拉麵、沾麵、雜炊、中谷堂艾草麻糬'],['京都','抹茶甜點、抹茶冰淇淋、八橋、和菓子、日式糰子、京都湯豆腐、京都料理、京漬物']];
-document.getElementById('foodl').innerHTML=MIZUHIKI+F.map(f=>`<b class="serif">${f[0]}</b><div class="tags" style="margin:6px 0 14px">${L(f[1].split('、'),'span')}</div>`).join('');
+(function renderFood(){
+  const key='kx-food';
+  const s=readState(key);
+  let idx=0;
+  document.getElementById('foodl').innerHTML=F.map(f=>`<b class="serif">${f[0]}</b><div class="tags" style="margin:6px 0 16px">${f[1].split('、').map(item=>{const id=idx++;return `<label><input type="checkbox" data-i="${id}" ${s[id]?'checked':''}><span>${item}</span></label>`;}).join('')}</div>`).join('');
+  document.getElementById('foodl').onchange=e=>{
+    if(e.target.type!=='checkbox')return;
+    s[e.target.dataset.i]=e.target.checked;
+    writeState(key,s);
+  };
+})();
+
 const C=[['初詣','新年第一次參拜神社或寺廟，祈求平安順利。'],['大祓式','祓除過去一年累積的穢氣與厄運。'],['除夜祭','感謝即將結束的一年，迎接新年。'],['歲旦祭','元旦舉行的新年正式神事。'],['巫女神樂','巫女手持神樂鈴、扇子，以傳統舞蹈祈福奉納。'],['獅子舞','除厄招福、健康長壽的祈福表演。'],['歌牌始式','新年歌牌奉納，展現古典文學與宮廷文化。'],['年越蕎麥麵','跨年夜吃，象徵長壽與斷厄。'],['初賣・福袋','商店新年首賣，常有折扣與福袋，象徵好運。']];
-document.getElementById('cul').innerHTML=MIZUHIKI+C.map(c=>`<details><summary><div>${c[0]}</div></summary><p>${c[1]}</p></details>`).join('');
+document.getElementById('cul').innerHTML=C.map(c=>`<details><summary><div>${c[0]}</div></summary><p>${c[1]}</p></details>`).join('');
 const H=[['12/31','部分商店餐廳提早打烊，晚上各地神社跨年祭典'],['1/1','元旦國定假日，初詣人潮眾多，部分百貨與餐廳休息'],['1/2','部分百貨開始初賣與福袋'],['1/3','假期最後一天，人潮與返程交通高峰'],['1/4','多數企業與機關恢復上班']];
 document.getElementById('hol').innerHTML=H.map(h=>`<li><b>${h[0]}</b>${h[1]}</li>`).join('');
 document.getElementById('holn').innerHTML='電車可能採假日時刻表；提前確認餐廳營業；熱門祭典預留排隊時間；備足現金（神社與小店）；提前預留機場報到時間；行程依人潮與交通彈性調整。';
-function ck(el,key,items){let s={};try{s=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
-document.getElementById(el).innerHTML=items.map((t,i)=>`<li><label><input type="checkbox" data-i="${i}" ${s[i]?'checked':''}><span>${t}</span></label></li>`).join('');
-document.getElementById(el).onchange=e=>{s[e.target.dataset.i]=e.target.checked;try{localStorage.setItem(key,JSON.stringify(s))}catch(x){}}}
+function ck(el,key,items){
+  let s=readState(key);
+  document.getElementById(el).innerHTML=items.map((t,i)=>`<li><label><input type="checkbox" data-i="${i}" ${s[i]?'checked':''}><span>${t}</span></label></li>`).join('');
+  document.getElementById(el).onchange=e=>{s[e.target.dataset.i]=e.target.checked;writeState(key,s);};
+}
 ck('packl','kx-pack','羽絨外套、發熱衣、保暖毛衣、長褲、圍巾、毛帽、手套、保暖襪、防滑防水鞋、暖暖包、護唇膏、保濕乳液、行動電源、充電線、折疊傘、隨身小包、護照、日圓現金、信用卡、ICOCA、旅遊保險資料、機票及住宿訂單'.split('、'));
 ck('todol','kx-todo',['大阪天滿宮 12/31 年末祭典完整時間','天滿宮元旦巫女神樂奉納時間','大阪 Metro 跨年夜是否延長營運','住吉大社 2027 獅子舞時間','五大力石是否開放拾取','住吉大社元始祭觀禮方式','元喜神 1/2、1/3 營業時間','奈良冬季鹿寄せ日期','八坂神社 1/3 歌牌始式時間與觀禮方式','京都、大阪、奈良降雪預報','黑門市場新年營業時間','心齋橋與百貨新年營業時間','中谷堂新年營業時間','Airbnb 自助入住密碼','Airbnb 是否有電梯','房東行李寄存營業時間','樂桃航空行李額度','Visit Japan Web 入境資料','旅遊平安險與不便險','網路與便攜式 Wi-Fi 使用方式']);
-const T=[['總覽',[['','ov']]],['航班住宿',[['航班','info'],['住宿','stay']]],['每日行程',D.map(d=>['Day '+d.n,d.id])],['美食',[['','food']]],['賞雪備案',[['','snow']]],['旅行須知',[['交通費用','cost'],['新年文化','culture'],['假期注意','notice']]],['行李清單',[['行李準備','pack'],['出發前確認','todo']]]];
-function go(id,sc){let ti=0,si=0;T.forEach((t,i)=>t[1].forEach((s,j)=>{if(s[1]===id){ti=i;si=j}}));const t=T[ti];
-document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==t[1][si][1]);
-document.getElementById('nav').innerHTML='<div class="row">'+T.map((x,i)=>`<a class="${i==ti?'on':''}" href="#${x[1][0][1]}">${x[0]}</a>`).join('')+'</div>'+(t[1].length>1?'<div class="row sub">'+t[1].map((s,j)=>`<a class="${j==si?'on':''}" href="#${s[1]}">${s[0]}</a>`).join('')+'</div>':'');
-document.querySelectorAll('nav .on').forEach(a=>a.scrollIntoView({inline:'center',block:'nearest'}));
-if(sc)document.querySelector('main').scrollIntoView();}
-window.addEventListener('hashchange',()=>go(location.hash.slice(1)||'ov',true));go(location.hash.slice(1)||'ov',false);
+
+// Main tabs with icons; 總覽 (ov) nested as a child tab under 每日行程; 每日行程 (d1) default
+const T=[
+  ['每日行程','🗓️',[['總覽','ov'],['Day 1','d1'],['Day 2','d2'],['Day 3','d3'],['Day 4','d4'],['Day 5','d5']]],
+  ['航班住宿','✈️',[['航班','info'],['住宿','stay']]],
+  ['美食','🍜',[['','food']]],
+  ['確認清單','🎒',[['行李準備','pack'],['出發前確認','todo']]],
+  ['旅行須知','🎐',[['交通費用','cost'],['新年文化','culture'],['假期注意','notice']]],
+  ['賞雪備案','❄️',[['','snow']]]
+];
+function go(id,sc){
+  let ti=0,si=0;
+  T.forEach((t,i)=>t[2].forEach((s,j)=>{if(s[1]===id){ti=i;si=j;}}));
+  const t=T[ti];
+  document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==t[2][si][1]);
+  document.getElementById('nav').innerHTML='<div class="row">'+T.map((x,i)=>`<a class="${i==ti?'on':''}" href="#${x[2][0][1]}"><span class="ico">${x[1]}</span><span>${x[0]}</span></a>`).join('')+'</div>'+(t[2].length>1?'<div class="row sub">'+t[2].map((s,j)=>`<a class="${j==si?'on':''}" href="#${s[1]}">${s[0]}</a>`).join('')+'</div>':'');
+  document.querySelectorAll('nav .on').forEach(a=>a.scrollIntoView({inline:'center',block:'nearest'}));
+  if(sc)document.querySelector('main').scrollIntoView();
+}
+window.addEventListener('hashchange',()=>go(location.hash.slice(1)||'d1',true));
+go(location.hash.slice(1)||'ov',false);
 </script>
 </body>
 </html>
