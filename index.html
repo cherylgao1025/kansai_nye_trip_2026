@@ -9,13 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 
-:root{--bg:#fff;--card:#fffdf8;--ink:#1D375E;--sub:#5d7089;--red:#129A9A;--gold:#D6B386;--line:#cfe0ee;--tint:#F4EFE2;--sky:#7BB6DD;--sun:#C8191E;--s1:#d9eaf6;--s2:#e7f1f8;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fffdf8;--card:#fffdf8;--ink:#1D375E;--sub:#5d7089;--red:#129A9A;--gold:#D6B386;--line:#cfe0ee;--tint:#F4EFE2;--sky:#7BB6DD;--sun:#C8191E;--sky-top:#E5B94F;--s1:#d9eaf6;--s2:#e7f1f8;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 
 
-html{scroll-behavior:smooth;scroll-padding-top:calc(110px + env(safe-area-inset-top,0px))}
+html{background:linear-gradient(var(--sky-top),var(--sky-top)) top / 100% env(safe-area-inset-top,0px) no-repeat var(--bg);scroll-behavior:smooth;scroll-padding-top:calc(110px + env(safe-area-inset-top,0px))}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:300 15px/1.8 "Noto Sans TC",system-ui,sans-serif;background-image:none}
 h1,h2,h3,.serif{font-family:"Shippori Mincho","Noto Serif TC",serif;font-weight:600}
+h2,h3{color:var(--sun)}
+.in2 h3{margin:0 0 8px;font-size:21px}
 a{color:var(--red)}
 
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:none;padding:0;pointer-events:none}
@@ -69,9 +71,9 @@ h2:before{content:"";flex:none;width:22px;height:22px;background:url("data:image
   height: 6px;
   pointer-events: none;
   background:
-    linear-gradient(var(--ink), var(--ink)) 0 0 / calc(50% - 12px) 2px no-repeat,
+    linear-gradient(var(--sun), var(--sun)) 0 0 / calc(50% - 12px) 2px no-repeat,
     linear-gradient(var(--gold), var(--gold)) 0 4px / calc(50% - 12px) 2px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) 100% 0 / calc(50% - 12px) 2px no-repeat,
+    linear-gradient(var(--sun), var(--sun)) 100% 0 / calc(50% - 12px) 2px no-repeat,
     linear-gradient(var(--gold), var(--gold)) 100% 4px / calc(50% - 12px) 2px no-repeat;
 }
 
@@ -85,18 +87,18 @@ h2:before{content:"";flex:none;width:22px;height:22px;background:url("data:image
   width: 84px;
   height: 32px;
   pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 50' fill='none'%3E%3Cpath d='M80 26 C58 8, 46 34, 80 26 C114 34, 102 8, 80 26 Z' stroke='%231D375E' stroke-width='3.2' fill='none'/%3E%3Cpath d='M80 26 L62 45 M80 26 L98 45' stroke='%23D6B386' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 50' fill='none'%3E%3Cpath d='M80 26 C58 8, 46 34, 80 26 C114 34, 102 8, 80 26 Z' stroke='%23C8191E' stroke-width='3.2' fill='none'/%3E%3Cpath d='M80 26 L62 45 M80 26 L98 45' stroke='%23D6B386' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .ov{text-decoration:none;color:var(--ink);display:block;margin:18px 0 0}
 .ov b{font-family:"Shippori Mincho",serif;color:var(--red);font-size:13px;letter-spacing:.15em}
-.ov h3{margin:2px 0 6px;font-size:18px}.ov p{margin:0;font-size:13px;color:var(--sub);line-height:1.6}
+.ov h3{margin:2px 0 6px;font-size:18px}.ov p{margin:0;font-size:13px;color:var(--ink);line-height:1.6}
 dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}dt{color:var(--sub)}dd{margin:0}
 .fl{display:flex;justify-content:space-between;align-items:center;text-align:center;gap:6px}
 .fl b{font-size:26px;font-family:"Shippori Mincho",serif;display:block}.fl i{font-style:normal;color:var(--sub);font-size:12px}.fl hr{flex:1;border:0;border-top:1px dashed var(--gold)}
 .dayh,.hero:after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='%237BB6DD' stroke-width='1.3'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3Ccircle cx='10' cy='10' r='7'/%3E%3Ccircle cx='30' cy='10' r='4'/%3E%3Ccircle cx='30' cy='10' r='7'/%3E%3Ccircle cx='0' cy='20' r='4'/%3E%3Ccircle cx='0' cy='20' r='7'/%3E%3Ccircle cx='0' cy='20' r='10'/%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3Ccircle cx='20' cy='20' r='7'/%3E%3Ccircle cx='20' cy='20' r='10'/%3E%3Ccircle cx='40' cy='20' r='4'/%3E%3Ccircle cx='40' cy='20' r='7'/%3E%3Ccircle cx='40' cy='20' r='10'/%3E%3C/g%3E%3C/svg%3E") 0 0/40px 20px repeat-x}.dayh{height:20px;margin-bottom:10px}.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:20px;opacity:.9}
-.day .num{font-family:"Shippori Mincho",serif;font-size:60px;line-height:1;color:var(--red);opacity:.9;font-weight:800}
+.day .num{font-family:"Shippori Mincho",serif;font-size:60px;line-height:1;color:var(--red);font-weight:800}
 .day .dt2{color:var(--sub);font-size:13px;letter-spacing:.1em}
 .badge{display:inline-block;background:var(--red);color:#fff;border-radius:99px;padding:1px 14px;font-size:13px;margin:6px 0}
 .tl{list-style:none;margin:10px 0;padding:0 0 0 18px;border-left:1px solid var(--gold)}
@@ -144,7 +146,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td{padding:6px 0;border
 }
 .ft-t:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
 .ft-s{margin:2px 0 0;color:var(--sub);font-size:12px;letter-spacing:.08em}
-.ft-secret{margin:10px auto 0;font-size:14px}
+.ft-secret{margin:10px auto 0;font-size:14px;color:var(--sun)}
 
 main{position:relative;z-index:1}
 h2:before{width:26px;height:26px;background-image:none}
@@ -171,7 +173,7 @@ h2:before{width:26px;height:26px;background-image:none}
 <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
 <defs>
   <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#E5B94F"/>
+    <stop offset="0" stop-color="var(--sky-top)"/>
     <stop offset=".55" stop-color="#F8DF94"/>
     <stop offset=".85" stop-color="#F4EFE2"/>
     <stop offset="1" stop-color="#D6B386"/>
@@ -220,7 +222,7 @@ h2:before{width:26px;height:26px;background-image:none}
 <section id="todo"><h2>出發前待確認</h2><p class="en">BEFORE DEPARTURE</p><div class="card"><ul class="ck" id="todol"></ul></div></section>
 </main>
 <footer class="ft">
-<button class="ft-t" id="footer-farewell" type="button" lang="ja" aria-controls="footer-message" aria-expanded="false">良い旅を</button>
+<button class="ft-t" id="footer-farewell" type="button" aria-controls="footer-message" aria-expanded="false">旅途愉快</button>
 <p class="ft-s">2026 – 2027 ・ 京都 ・ 大阪 ・ 奈良</p>
 <div role="status"><p class="ft-secret" id="footer-message" hidden>希望大嚕喜歡，小嚕很愛很愛你喲</p></div>
 </footer>
@@ -255,14 +257,14 @@ tl:[['07:30','日本橋站出發'],['08:45–10:00','伏見稻荷大社、千本
 sp:[['伏見稻荷大社','伏見稲荷大社','稻荷神社總本宮，朱紅千本鳥居與狐狸神使，祈求商業、財運、工作順利。僅安排本殿與千本鳥居前段，不登稻荷山；參拜免費。','inari.jp'],['清水寺','清水寺','仁王門、三重塔、清水舞台、音羽瀑布。若遇降雪，雪中古寺非常漂亮。','kiyomizudera.or.jp'],['三年坂・二年坂','産寧坂','傳統町家老街，有抹茶甜點、八橋、糰子、京漬物、和菓子。'],['八坂神社歌牌始式','八坂神社','1/3 13:00 於能舞台，免費觀賞。參與者穿十二單等平安服飾，以百人一首競技。同日 08:00 元始祭、09:00 初能奉納；若想看能樂可改為早上直奔八坂、取消伏見稻荷。','ja.kyoto.travel/event/single.php?event_id=4401'],['圓山公園・八坂之塔・庚申堂','八坂庚申堂','祭典後散步休息；八坂之塔是京都經典街景；庚申堂有彩色「くくり猿」祈願，下午關門時間要留意。'],['祇園・花見小路','花見小路','傳統花街，町家與茶屋。部分私人巷弄禁止進入及攝影，不追逐、不擅拍藝妓與舞妓。'],['鴨川・四條河原町','四条河原町','鴨川適合看黃昏；四條河原町是購物美食商圈，適合晚餐與最後採買。']],
 tr:'去程：日本橋 → Metro 堺筋線 → 北濱 → 京阪電車 → 伏見稻荷站。\n伏見稻荷 → 清水五條站 → 步行 20–25 分 → 清水寺 → 三年坂 → 二年坂 → 八坂神社。\n返程：祇園四條 → 京阪 → 北濱 → 堺筋線 → 日本橋。',
 no:'1/3 為假期最後一天，人潮與返程交通皆為高峰。'},
-{id:'d5',n:5,date:'1/4（一）',t:'大阪・旅程尾聲',ov:'黑門市場、伴手禮、退房、關西機場、返回台灣',th:'享用最後一頓日式早餐、採買伴手禮，帶著回憶返回台灣。',
-tl:[['07:30–08:30','起床、整理行李'],['08:30–10:00','黑門市場早餐、伴手禮'],['10:00–10:30','返回住宿退房，確認行李'],['10:30–12:30','南海難波 → 關西機場 → 接駁巴士至 T2'],['12:30–14:45','報到、托運、安檢、午餐、免稅店'],['15:25 → 17:55','搭 Peach 返回桃園']],
-sp:[['黑門市場','黒門市場','大阪傳統市場：生魚片、海鮮丼、烤干貝、玉子燒、和牛、日本草莓、甜點。新年部分店家可能休息或調整營業時間。','kuromon.com']],
+{id:'d5',n:5,date:'1/4（一）',t:'大阪・旅程尾聲',ov:'黑門市場、伴手禮、退房、關西機場、返回台灣',th:'享用最後一頓日式早餐、、採買伴手禮，帶著回憶返回台灣。',
+tl:[['07:3₀–₀8:₃₀','起床、整理行李'],['₀8:₃₀–₁₀:₀₀','黑門市場早餐、、伴手禮'],['₁₀:₀₀–₁₀:₃₀','返回住宿退房，確認行李'],['₁₀:₃₀–₁₂:₃₀','南海難波 → 關西機場 → 接駁巴士至 T2'],['₁₂:₃₀–₁₄:₄₅','報到、、托運、、安檢、、午餐、、免稅店'],['₁₅:₂₅ → ₁₇:₅₅','搭 Peach 返回桃園']],
+sp:[['黑門市場','','大阪傳統市場：生魚片、、海鮮丼、、烤干貝、、玉子燒、、和牛、、日本草莓、、甜點。新年部分店家可能休息或調整營業時間。','','kuromon.com']],
 tr:'住宿 → 南海難波 → 空港急行／Rapi:t → 關西機場站 → 免費接駁巴士 → T2。預計 12:30 抵達。',
 no:'國際線報到截止 14:35，建議提前約 3 小時抵達，避開新年返程人潮。'}];
 
 document.getElementById('ovg').innerHTML=D.map(d=>`<a class="card ov" href="#${d.id}"><b>DAY ${d.n}｜${d.date}</b><h3>${d.t}</h3><p>${d.ov}</p></a>`).join('');
-document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card"><b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2"><b class="serif">景點與美食</b>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong> ${d.no}</div></section>`).join('');
+document.getElementById('days').innerHTML=D.map(d=>`<section class="day" id="${d.id}"><div class="num">0${d.n}</div><div class="dt2">DAY ${d.n}｜${d.date}</div><h2>${d.t}</h2>${d.bg?`<span class="badge">${d.bg}</span>`:''}<p>${d.th}</p><div class="card"><b class="serif">時間安排</b><ul class="tl">${d.tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ul></div><div class="card in2"><h3>景點與美食</h3>${d.sp.map(s=>`<details><summary><div>${s[0]}<span>${s[1]}</span></div></summary><p>${s[2]}</p><a class="map" target="_blank" rel="noopener" href="${M(s[1])}">地圖</a>${s[3]?` <a class="map" target="_blank" rel="noopener" href="https://${s[3]}">官網</a>`:''}</details>`).join('')}</div><div class="box"><strong>交通</strong><br>${d.tr.replace(/\n/g,'<br>')}</div><div class="box"><strong>備忘</strong> ${d.no}</div></section>`).join('');
 const snow=[['貴船神社','京都北部山區，朱紅燈籠石階與雪景。出町柳 → 叡山電鐵 → 貴船口 → 巴士 33 號；單程約 100–130 分，建議半天。山區有雪可取消伏見稻荷與清水寺改來此，大雪須確認電車巴士。'],['金閣寺','金色舍利殿與鏡湖池雪景。市區積雪時可改為上午金閣寺，再趕 13:00 八坂神社。'],['嵐山','竹林、渡月橋、天龍寺。不列固定行程，以免京都太緊湊，嵐山下雪再考慮。'],['鞍馬寺','可與貴船搭配，但積雪時不建議貿然走貴船與鞍馬間的山間步道。']];
 document.getElementById('snowl').innerHTML=snow.map((s,i)=>`<details><summary><div>備案${i+1}：${s[0]}</div></summary><p>${s[1]}</p></details>`).join('');
 
